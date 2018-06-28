@@ -36,9 +36,9 @@ contract TileCreation{
 
     //Function to create psuedo-random uints for resource type and amount
     function randomResources(int8 Xpos, int8 Ypos) internal {
-        ResourceType = int8(keccak256(now, randNonce, Xpos, Ypos)) % 100;
+        ResourceType = int8(keccak256(abi.encodePacked(now, randNonce, Xpos, Ypos))) % 100;
         randNonce++;
-        ResourceAmount = int8(keccak256(now, randNonce, Xpos, Ypos)) % 100;
+        ResourceAmount = int8(keccak256(abi.encodePacked(now, randNonce, Xpos, Ypos))) % 100;
     }
 
     function RealmBase() public {
